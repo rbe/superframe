@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : waf.xml
+    Created on : 16. Mai 2005, 20:03
+    Author     : Ralf Bensmann
+    Description:
+        Configuration for WebApplicationFramework
+-->
+
+<web-application>
+
+    <!--
+    
+        Options
+    
+    -->
+    <options>
+
+        <option name="debug" value="true" />
+        <option name="debug-with-timestamp" value="true" />
+        <option name="coredebug" value="false" />
+        <option name="number-of-sessions" value="10" />
+
+    </options>
+    
+    <!--
+    
+        Datasources
+    
+    -->
+    <datasources>
+
+        <datasource name="oracle"
+            type="jdbc"
+            class="oracle.jdbc.driver.OracleDriver"
+            url="jdbc:oracle:thin:@localhost:1521:bnm"
+            username="vwclubms"
+            password="vwclubms" />
+
+    </datasources>
+
+    <!--
+    
+        SQL Queries for a certain datasource
+    
+    -->
+    <sql-queries datasource="oracle">
+    
+        <!--
+            Guestbook
+        -->
+        <sqlquery name="latest_guestbook_page">
+            SELECT
+                    MAX(page) maxpage
+              FROM
+                    v_guestbook_pages
+        </sqlquery>
+
+        <sqlquery name="list_guestbook_pages">
+            SELECT
+                    DISTINCT page
+              FROM
+                    v_guestbook_pages
+             ORDER BY
+                    page DESC
+        </sqlquery>
+
+        <sqlquery name="list_guestbook">
+            SELECT
+                    createddatetime,
+                    realname,
+                    email,
+                    url,
+                    text
+              FROM
+                    v_guestbook_pages
+             WHERE
+                    page = ?
+             ORDER BY
+                    createddatetime DESC
+            <parameter position="1" variable="guestbook_page"/>
+        </sqlquery>
+
+        <!--
+            Appointments
+        -->
+        <sqlquery name="list_active_appointments">
+            SELECT
+                    dateofappointment,
+                    description,
+                    url,
+                    realname,
+                    email,
+                    phone
+              FROM
+                    t_appointments
+             WHERE
+                    dateofappointment >= SYSDATE - 1
+             ORDER BY
+                    dateofappointment
+        </sqlquery>
+
+        <!--
+            Links
+        -->
+        <sqlquery name="list_link_categories">
+              SELECT
+                    id,
+                    name,
+                    description,
+                    entries,
+                    dateoflastlink,
+                    urloflastlink
+               FROM
+                    v_linkcategories
+        </sqlquery>
+        
+        <sqlquery name="get_link_category_detail">
+            SELECT
+                    name,
+                    entries
+              FROM
+                    v_linkcategories
+             WHERE
+                    id = ?
+            <parameter position="1" variable="linkcategoryid"/>
+        </sqlquery>
+
+        <sqlquery name="get_links_for_category">
+            SELECT
+                    createddatetime,
+                    realname,
+                    email,
+                    name,
+                    description,
+                    url,
+                    hits
+              FROM
+                    v_links
+             WHERE
+                    linkcategoriesid = ?
+            <parameter position="1" variable="linkcategoryid"/>
+        </sqlquery>
+        
+        <!--
+            Adverts
+        -->
+        <sqlquery name="list_advert_categories">
+            SELECT
+                    id,
+                    name,
+                    description,
+                    entries,
+                    dateoflastentry
+              FROM
+                    v_advertcategories
+        </sqlquery>
+
+        <sqlquery name="get_advert_category_info">
+            SELECT
+                    name,
+                    entries
+              FROM
+                    v_advertcategories
+              WHERE
+                    id = ?
+            <parameter position="1" variable="sp_createadvert_v_category"/>
+        </sqlquery>
+        
+        <sqlquery name="get_adverts">
+              SELECT
+                    createddatetime,
+                    realname,
+                    email,
+                    url,
+                    description,
+                    text,
+                    picture
+               FROM
+                    v_adverts
+              WHERE
+                    advertcategoriesid = ?
+            <parameter position="1" variable="sp_createadvert_v_category"/>
+        </sqlquery>
+
+    </sql-queries>
+
+    <!--
+    
+        SQL DML: Data Manipulation Language
+    
+    -->    
+    <sql-dml>
+    
+        <!--
+            Create advert entry
+        -->
+        <procedure name="sp_createadvert">
+            <parameter direction="in" position="1" variable="v_category" type="" />
+            <parameter direction="in" position="2" variable="v_realname" type="" />
+            <parameter direction="in" position="3" variable="v_email" type="" />
+            <parameter direction="in" position="4" variable="v_url" type="" />
+            <parameter direction="in" position="5" variable="v_description" type="" />
+            <parameter direction="in" position="6" variable="v_text" type="" />
+            <parameter direction="in" position="7" variable="v_picture" type="" />
+        </procedure>
+    
+    </sql-dml>
+    
+</web-application>

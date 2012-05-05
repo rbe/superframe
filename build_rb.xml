@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project basedir="." default="core" name="Base">
+	
+	<property file="lib/build.properties"/>
+
+	<path id="core.classpath">
+		<fileset dir="${shared.lib.dir}">
+			<include name="jdom.jar"/>
+			<include name="mail.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="core" description="Core">
+		<delete file="${base.jarfile}"/>
+		<mkdir dir="${base.build.dir}"/>
+		<javac source="1.4" destdir="${base.build.dir}" srcdir=".">
+			<include name="com/bensmann/cli/**.java"/>
+			<include name="com/bensmann/csv/**.java"/>
+			<include name="com/bensmann/exceptions/**.java"/>
+			<include name="com/bensmann/java/**.java"/>
+			<include name="com/bensmann/jdbc/**.java"/>
+			<include name="com/bensmann/kernel/**.java"/>
+			<include name="com/bensmann/mail/**.java"/>
+			<classpath refid="core.classpath"/>
+		</javac>
+		<jar jarfile="${base.jarfile}">
+			<fileset dir="${base.build.dir}"/>
+		</jar>
+		<delete dir="${base.build.dir}"/>
+	</target>
+	
+	<target name="allinone" depends="core" description="All-in-One-jar">
+		<mkdir dir="${base.build.dir}" />
+		<unjar src="${base.jarfile}" dest="${base.build.dir}" />
+		<unjar src="${shared.lib.dir}/jdom.jar" dest="${base.build.dir}" />
+		<unjar src="${shared.lib.dir}/mail.jar" dest="${base.build.dir}" />
+		<jar destfile="${shared.lib.dir}/bnmbase${aio.suffix}"
+			basedir="${base.build.dir}"/>
+		<delete dir="${base.build.dir}" />
+	</target>
+
+</project>

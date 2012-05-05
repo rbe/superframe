@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MVDData version="1.3">
+    <DesignDocument designVersion="MIDP-2" uidCounter="18">
+        <DesignComponent id="$MobileDevice" typeid="MIDP:$MobileDevice" uid="0"/>
+        <DesignComponent id="$StartPoint" typeid="MIDP:$StartPoint" uid="1">
+            <Property name="targetDisplayable" value="ShowPropertyForm"/>
+            <Property name="targetForwardDisplayable"/>
+        </DesignComponent>
+        <DesignComponent id="ShowPropertyForm" typeid="MIDP:javax.microedition.lcdui.Form" uid="2">
+            <ContainerProperty name="commands"/>
+            <ContainerProperty name="items">
+                <ContainerPropertyItem value="vendorStringItem"/>
+                <ContainerPropertyItem value="swVersionStringItem"/>
+                <ContainerPropertyItem value="midpStringItem"/>
+                <ContainerPropertyItem value="cldcStringItem"/>
+                <ContainerPropertyItem value="encodingStringItem"/>
+                <ContainerPropertyItem value="audioCaptureSupportedStringItem"/>
+                <ContainerPropertyItem value="audioEncodingsStringItem"/>
+                <ContainerPropertyItem value="videoCaptureSupportedStringItem"/>
+                <ContainerPropertyItem value="videoEncodingsStringItem"/>
+                <ContainerPropertyItem value="snapshotEncodingsStringItem"/>
+                <ContainerPropertyItem value="jsr75StringItem"/>
+                <ContainerPropertyItem value="jsr120StringItem"/>
+                <ContainerPropertyItem value="jsr205stringItem"/>
+                <ContainerPropertyItem value="imeiStringItem"/>
+            </ContainerProperty>
+        </DesignComponent>
+        <DesignComponent id="imeiStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="3">
+            <Property name="label" value="STRING:IMEI"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="jsr205stringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="4">
+            <Property name="label" value="STRING:JSR 205 - MMS"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="jsr75StringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="5">
+            <Property name="label" value="STRING:JSR 75 - File and PIM"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="midpStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="7">
+            <Property name="label" value="STRING:MIDP"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="cldcStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="8">
+            <Property name="label" value="STRING:CLDC"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="encodingStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="9">
+            <Property name="label" value="STRING:Encoding"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="audioCaptureSupportedStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="10">
+            <Property name="label" value="STRING:Audio Capture supported?"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="videoCaptureSupportedStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="11">
+            <Property name="label" value="STRING:Video capture supported?"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="audioEncodingsStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="12">
+            <Property name="label" value="STRING:Audio encodings"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="videoEncodingsStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="13">
+            <Property name="label" value="STRING:Video encodings"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="snapshotEncodingsStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="14">
+            <Property name="label" value="STRING:Snapshot encodings"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="vendorStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="15">
+            <Property name="label" value="STRING:Vendor"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="swVersionStringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="16">
+            <Property name="label" value="STRING:Software version"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="jsr120StringItem" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="17">
+            <Property name="label" value="STRING:JSR 120 - WMA"/>
+            <Property name="text" value="STRING:"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+    </DesignDocument>
+    <FlowDocument version="1.1">
+        <Node id="$MobileDevice" location="160,192" order=",$StartPoint,,,,,,,,,$ExitPoint,,,,,"/>
+        <Node id="ShowPropertyForm" location="408,208" order=",,,,,,,,,,$Default,,,,,"/>
+        <Link id="$StartPoint$ActionLink" path="200,168,296,168,296,184,368,184"/>
+    </FlowDocument>
+</MVDData>
